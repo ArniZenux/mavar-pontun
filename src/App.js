@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+//import { useState } from 'react'; 
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
 
+import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
+import 'primeflex/primeflex.css';
+
+//import { Layout } from './components/Layout/Layout';
+import { Navigation } from './components/Nav/Nav';
+import { Home } from './pages/home';
+import { Order } from './pages/order';
+
+//import { Login } from './pages/login';
+  /*
+    <Navigation />
+        <BrowserRouter>
+          <Routes>
+            <Route exact path="/"> <Home/> </Route>
+            <Route exact path="/order"> <Order/> </Route>
+          </Routes>
+        </BrowserRouter>
+   
+   */
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navigation/>
     </div>
   );
 }
