@@ -1,13 +1,20 @@
 import React from 'react';
+//import React, { useState, useEffect } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
+//import { ProductService } from '../service/ProductService';
 
-export function Index() {
-  return (
-    <div className="surface-ground px-0 py-3 md:px-1 lg:px-8">
-      <div className="text-900 font-medium text-900 text-xl mb-3">Velkominn í Pöntunarsíða - Endalega að panta túlk</div>
-        <div className="flex justify-content-center">
-          <div className="card w-auto">
+export function MyorderForm() {
+    //const [products, setProducts] = useState([]);
+    //const productService = new ProductService();
+
+    //useEffect(() => {
+    //    productService.getProductsSmall().then(data => setProducts(data));
+    //}, []); // eslint-disable-line react-hooks/exhaustive-deps
+ 
+    return (
+        <div>
+            <div className="card">
                 <DataTable responsiveLayout="scroll">
                     <Column field="code" header="Lýsing"></Column>
                     <Column field="name" header="Dagtal"></Column>
@@ -15,8 +22,6 @@ export function Index() {
                     <Column field="quantity" header="Túlkur"></Column>
                 </DataTable>
             </div>
-          </div>
         </div>
-      
-  );
+    );
 }
