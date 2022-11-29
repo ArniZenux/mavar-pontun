@@ -21,7 +21,7 @@ return (
     <div className="align-items-center flex-grow-1 justify-content-between hidden lg:flex absolute lg:static w-full surface-overlay left-0 top-100 z-1 shadow-2 lg:shadow-none">
       <ul className="list-none p-0 m-0 flex lg:align-items-center select-none flex-column lg:flex-row">
         <li>
-          <NavLink className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 w-full" to={`/`}>
+          <NavLink className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 w-full" style={{ textDecoration: 'none' }} to={`/`}>
             <i className="pi pi-home mr-2"></i>
             <span>Heima</span> 
             <Ripple />
@@ -38,12 +38,12 @@ return (
           </StyleClass>   
           <ul className="list-none py-3 px-6 m-0 lg:px-0 lg:py-0 border-round shadow-0 lg:shadow-2 lg:border-1 border-50 lg:absolute surface-overlay hidden origin-top w-full lg:w-15rem cursor-pointer">
             <li>
-              <NavLink className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 w-full" to={`/order`}>
+              <NavLink className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 w-full" style={{ textDecoration: 'none' }} to={`/order`}>
                 <i className="pi pi-user-plus mr-2"></i>
                 <span className="font-medium">Panta túlk</span>
                 <Ripple />
               </NavLink>
-              <NavLink className="p-ripple flex p-3 align-items-center text-600 hover:text-900 hover:surface-100 transition-colors transition-duration-150 w-full" to={`/myorder`}>
+              <NavLink className="p-ripple flex p-3 align-items-center text-600 hover:text-900 hover:surface-100 transition-colors transition-duration-150 w-full" style={{ textDecoration: 'none' }} to={`/myorder`}>
                 <i className="pi pi-calendar mr-2"></i>
                 <span className="font-medium">Mínir pantanir</span>
                 <Ripple />
@@ -52,7 +52,7 @@ return (
           </ul>
         </li>
         <li>
-          <NavLink className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 w-full" to={`/check`}>
+          <NavLink className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 w-full" style={{ textDecoration: 'none' }} to={`/check`}>
             <i className="pi pi-calendar mr-2"></i>
             <span>Athuga laus túlk</span>
             <Ripple />
@@ -68,7 +68,7 @@ return (
           </div>
         </li>
         <li>
-          <NavLink className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 w-full" to={``}>
+          <NavLink className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 w-full"  style={{ textDecoration: 'none' }} to={``}>
             <i className="pi mr-2"></i>
             <span className="font-medium">Útskrá</span>
             <Ripple />

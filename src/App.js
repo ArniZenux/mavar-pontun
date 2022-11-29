@@ -10,6 +10,8 @@ import { Home } from './pages/home';
 import { Order } from './pages/order';
 import { Myorder } from './pages/myorder';
 import { Check } from './pages/check';
+import { NotFound } from './pages/404';
+
 //import { Login } from './pages/login';
 
 function App() {
@@ -31,6 +33,7 @@ function App() {
             <Route exact path="/order" element={<Order />} />
             <Route exact path="/myorder" element={<Myorder />} />
             <Route exact path="/check" element={<Check />} />
+            <Route path="*" element={<NotFound/> } />
           </Routes>
         </Layout>
       </BrowserRouter>
