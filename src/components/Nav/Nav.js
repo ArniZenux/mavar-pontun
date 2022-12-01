@@ -9,7 +9,8 @@ export const Navigation = () => {
 const btnRef1 = useRef(null);
 const btnRef2 = useRef(null);
 
-//eslint-disable-next-line
+
+//eslint-disable
 return (
   <div className="surface-overlay py-3 px-6 shadow-1 flex align-items-center justify-content-between relative lg:static" style={{ minHeight: '80px' }}>
     <img src={mavarlogo2} alt="Mavarlogo" height={40} className="border-round-md mr-1 lg:mr-6" />
@@ -30,7 +31,7 @@ return (
         </li>
         <li className="lg:relative">
           <StyleClass nodeRef={btnRef2} selector="@next" enterClassName="hidden" enterActiveClassName="scalein" leaveToClassName="hidden" leaveActiveClassName="fadeout" hideOnOutsideClick>
-            <a ref={btnRef2}  className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 w-full">
+            <a ref={btnRef2} className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 w-full">
               <i className="pi pi-users mr-2"></i>
               <span>Pöntun</span> 
               <i className="pi pi-angle-down ml-auto lg:ml-0"></i>

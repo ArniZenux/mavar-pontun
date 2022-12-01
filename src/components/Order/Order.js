@@ -1,5 +1,4 @@
 import { useState } from 'react'; 
-
 import { Form, Field } from 'react-final-form';
 import { Calendar } from "primereact/calendar";
 import { InputText } from 'primereact/inputtext';
@@ -11,32 +10,38 @@ export function OrderForm() {
   let [day, setDay] = useState(new Date());
   let [start, setStart] = useState("00:00");
   let [last, setLast] = useState("00:00");
-  const [showMessage, setShowMessage] = useState(false);
-  const [formData, setFormData] = useState({});
 
+  //eslint-disable-next-line} 
+  const [setShowMessage] = useState(false);
+  const [setFormData] = useState({});
+  
   const validate = (data) => {
     let errors = {};
 
     if (!data.name) {
-        errors.name = 'Vantar nafn þitt.';
+        errors.name = 'Vantar nafn';
     }
 
     if (!data.place) {
-        errors.place = 'Hvert ertu að fara í ?';
+        errors.place = 'Vantar staðsetning';
     }
     if (!data.lysing) {
-      errors.lysing = 'Vantar lýsing á verkefni sem þú ert fara í ';
+      errors.lysing = 'Vantar lýsing';
     }
     else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(data.email)) {
-        errors.email = 'Invalid email address. E.g. example@email.com';
+        errors.email = 'Tölvupóstur er ógildi';
     }
 
-    if (!data.password) {
-        errors.password = 'Password is required.';
+    if (!data.dagtal) {
+        errors.dagtal = 'Vantar dagtal';
     }
 
-    if (!data.accept) {
-        errors.accept = 'You need to agree to the terms and conditions.';
+    if (!data.start) {
+        errors.start = 'Vantar tima';
+    }
+    
+    if (!data.last) {
+      errors.last = 'Vantar tima';
     }
 
     return errors;
@@ -44,121 +49,116 @@ export function OrderForm() {
 
   const onSubmit = (data, form) => {
     setFormData(data);
-    //setShowMessage(true);
-
+    setShowMessage(true);
+    console.log(data);
     form.restart();
   };
 
   const isFormFieldValid = (meta) => !!(meta.touched && meta.error);
   const getFormErrorMessage = (meta) => {
-      return isFormFieldValid(meta) && <small className="p-error">{meta.error}</small>;
+    //return isFormFieldValid(meta) && <small className="p-error">{meta.error}</small>;
   };
 
   return (
     <div className="flex-wrap justify-content-center" style={{ margin: '0 auto' }}>
-     <div className="surface-ground px-0 py-3 md:px-1 lg:px-1">
-      <div className="text-900 font-medium text-900 text-xl mb-3">Pöntunarbeiðni</div>
-        <div className="surface-card p-3 shadow-2 border-round p-fluid">
-          <Form onSubmit={onSubmit} initialValues={{ name: '', email: '', password: '', date: null, country: null, accept: false }} validate={validate} render={({ handleSubmit }) => (
-            <form onSubmit={handleSubmit} className="p-fluid">
-              <Field name="name" render={({ input, meta }) => (
-                <div className="field">
-                    <span className="p-float-label">
-                        <InputText id="name" {...input} autoFocus className={classNames({ 'p-invalid': isFormFieldValid(meta) })} />
-                        <label htmlFor="name" className={classNames({ 'p-error': isFormFieldValid(meta) })}>Nafn*</label>
-                    </span>
-                    {getFormErrorMessage(meta)}
+      <div className="surface-ground px-0 py-3 md:px-1 lg:px-1">
+        <div className="text-900 font-medium text-900 text-xl mb-3">Pöntunarbeiðni</div>
+          <div className="surface-card p-3 shadow-2 border-round p-fluid">
+            <Form onSubmit={onSubmit} initialValues={{ nafn: '', stadur: '', lysing: '', date: null, country: null, accept: false }} validate={validate} render={({ handleSubmit }) => (
+              <form onSubmit={handleSubmit} className="p-fluid">
+                <div className="grid formgrid">
+                  <div className="field mb-4 col-12 md:col-6">
+
+                    <Field name="name" render={({ input, meta }) => (
+                      <div className="field mt-4 col-12 md:col-12">
+                        <span className="p-float-label">
+                          <InputText id="name" {...input}  className={classNames({ 'p-invalid': isFormFieldValid(meta) })} />
+                          <label htmlFor="name" className={classNames({ 'p-error': isFormFieldValid(meta) })}>Nafn*</label>
+                        </span>
+                        {getFormErrorMessage(meta)}
+                      </div>
+                    )} />
+                    
+                    <Field name="place" render={({ input, meta }) => (
+                      <div className="field mt-5 col-12 md:col-12">
+                        <span className="p-float-label">
+                          <InputText id="place" {...input}  className={classNames({ 'p-invalid': isFormFieldValid(meta) })} />
+                          <label htmlFor="place" className={classNames({ 'p-error': isFormFieldValid(meta) })}>Hvar er staður*</label>
+                        </span>
+                        {getFormErrorMessage(meta)}
+                      </div>
+                    )} />
+                    
+                    <Field name="lysing" render={({ input, meta }) => (
+                      <div className="field mt-5 col-12 md:col-12">
+                        <span className="p-float-label">
+                          <InputTextarea id="lysing" autoResize rows={3} {...input}  className={classNames({ 'p-invalid': isFormFieldValid(meta) })} />
+                          <label htmlFor="lysing" className={classNames({ 'p-error': isFormFieldValid(meta) })}>Lýsing á verkefni*</label>
+                        </span>
+                        {getFormErrorMessage(meta)}
+                      </div>
+                    )} />
+                  </div>
+
+                  <div className="field mb-4 col-12 md:col-6">
+                    <Field name="dagtal" render={({ input, meta }) => (
+                      <div className="field md:mt-4 col-12 md:col-12">
+                        <span className="p-float-label">
+                          <Calendar 
+                            id="dagtal"
+                            value={day}  
+                            onChange={(e) => setDay(e.value)}
+                            dateFormat="dd/mm/yy" 
+                            mask="99/99/9999"
+                            showIcon 
+                            {...input}  className={classNames({ 'p-invalid': isFormFieldValid(meta) })}
+                          />
+                          <label htmlFor="dagtal" className={classNames({ 'p-error': isFormFieldValid(meta) })}>Dagtal*</label>
+                        </span>                  
+                      </div>
+                    )} />
+
+                    <Field name="start" render={({ input, meta }) => (
+                      <div className="field mt-5 col-12 md:col-12">
+                        <span className="p-float-label">
+                          <Calendar 
+                            id="start" 
+                            value={start} 
+                            onChange={(e) => setStart(e.value)} 
+                            mask="99:99"
+                            timeOnly 
+                            hourFormat="24" 
+                            {...input}  className={classNames({ 'p-invalid': isFormFieldValid(meta) })}
+                          />
+                        <label htmlFor="start" className={classNames({ 'p-error': isFormFieldValid(meta) })}>Klukka byrja*</label>
+                        </span>
+                      </div>
+                    )} />
+                  
+                    <Field name="last" render={({ input, meta }) => (
+                      <div className="field mt-5 col-12 md:col-12">
+                        <span className="p-float-label">
+                          <Calendar 
+                            id="last" 
+                            value={last} 
+                            onChange={(e) => setLast(e.value)} 
+                            mask=""
+                            timeOnly 
+                            hourFormat="24" 
+                            {...input}  className={classNames({ 'p-invalid': isFormFieldValid(meta) })}
+                          />
+                          <label htmlFor="last" className={classNames({ 'p-error': isFormFieldValid(meta) })}>Klukka endir*</label>
+                        </span>
+                      </div>
+                    )} />
+                
+                  </div>
                 </div>
-               )} />
-                <Field name="place" render={({ input, meta }) => (
-                <div className="field">
-                    <span className="p-float-label">
-                        <InputText id="place" {...input} autoFocus className={classNames({ 'p-invalid': isFormFieldValid(meta) })} />
-                        <label htmlFor="place" className={classNames({ 'p-error': isFormFieldValid(meta) })}>Hvar er staður*</label>
-                    </span>
-                    {getFormErrorMessage(meta)}
-                </div>
-               )} />
-                <Field name="lysing" render={({ input, meta }) => (
-                <div className="field">
-                    <span className="p-float-label">
-                        <InputTextarea id="lysing" {...input} autoFocus className={classNames({ 'p-invalid': isFormFieldValid(meta) })} />
-                        <label htmlFor="lysing" className={classNames({ 'p-error': isFormFieldValid(meta) })}>Lýsing á verkefni*</label>
-                    </span>
-                    {getFormErrorMessage(meta)}
-                </div>
-               )} />
-               <Button type="submit" label="Submit" className="mt-2" />
-            </form>
-          )} />
-        </div>
+              <Button label="Senda beiðni" icon="pi pi-send" className="w-auto ml-2" />
+              </form>
+            )} />
+          </div>
       </div>
     </div>
   );
 }
-
-/*
-
-   
-         <form onSubmit={handleSubmit} className="p-fluid">
-      
-          <div className="grid formgrid">
-            <div className="field mb-4 col-12 md:col-6">
-            
-              <div className="field mb-4 col-12 md:col-12">
-                <label htmlFor="nafn" className="font-medium text-900">Nafn þitt *</label>
-                <InputText id="nafn" type="text" />
-              </div>
-           
-              <div className="field mb-4 col-12 md:col-12">
-                <label htmlFor="stadur" className="font-medium text-900">Hvar er staður *</label>
-                <InputText id="stadur" type="text" />
-              </div>
-
-              <div className="field mb-3 col-12 md:col-12">
-                <label htmlFor="notes" className="font-medium text-900">Lýsing *</label>
-                <InputTextarea id="notes" autoResize rows={5} />
-              </div>
-            
-            </div>
-            
-            <div className="field mb-4 col-12 md:col-6">
-            
-              <div className="field mb-4 col-12 md:col-12">
-                <label htmlFor="invoice_date" className="font-medium text-900">Dagtal *</label>
-                <Calendar 
-                    value={day}  
-                    onChange={(e) => setDay(e.value)}
-                    dateFormat="dd/mm/yy" 
-                    showIcon 
-                  />
-              </div>
-           
-              <div className="field mb-4 col-12 md:col-12">
-                <label htmlFor="time24">Klukka byrja? *</label>
-                  <Calendar 
-                    id="time24" 
-                    value={start} 
-                    onChange={(e) => setStart(e.value)} 
-                    timeOnly 
-                    hourFormat="24" 
-                  />
-              </div>
-
-              <div className="field mb-3 col-12 md:col-12">
-                <label htmlFor="time12">Klukka endir? (valin)</label>
-                  <Calendar 
-                    id="time12" 
-                    value={last} 
-                    onChange={(e) => setLast(e.value)} 
-                    timeOnly 
-                    hourFormat="24" 
-                  />
-              </div>
-            
-            </div>
-          </div>
-             
-          <Button label="Senda beiðni" icon="pi pi-send" className="w-auto" />
-
-          */

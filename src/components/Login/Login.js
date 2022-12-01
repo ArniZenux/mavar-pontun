@@ -16,7 +16,7 @@ export function LoginForm() {
         </div>
 
         <div>
-          <label htmlFor="email" className="block text-900 font-medium mb-2">Notandi</label>
+          <label htmlFor="email" className="block text-900 font-medium mb-2">Tölvupóstur</label>
           <InputText type="text" className="w-full mb-3" />
 
           <label htmlFor="password" className="block text-900 font-medium mb-2">Lyklaorð</label>

@@ -1,28 +1,35 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+//import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
-
+/*
 import { Layout } from './components/Layout/Layout';
 import { Home } from './pages/home';
 import { Order } from './pages/order';
 import { Myorder } from './pages/myorder';
 import { Check } from './pages/check';
 import { NotFound } from './pages/404';
-
-//import { Login } from './pages/login';
+*/
+import { Login } from './pages/login';
+//import { Register } from './pages/register';
 
 export default function App() {
   
-/*  return (
+  /*return (
+    <div>
+      <Register />
+    </div>
+  )*/
+  
+  return (
     <div>
       <Login />
     </div>
   )
-  */
-  
+
+  /*
   return (
     <div>
       <BrowserRouter>
@@ -38,5 +45,5 @@ export default function App() {
       </BrowserRouter>
     </div>
   );
-  
+  */
 }
