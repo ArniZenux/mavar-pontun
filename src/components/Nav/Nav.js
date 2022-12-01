@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import React, { useRef } from 'react';
 import { StyleClass } from 'primereact/styleclass';
 import { Ripple } from 'primereact/ripple';
+import mavarlogo2 from '../../utils/Images/brid2.jpg';
 
 export const Navigation = () => {
   
@@ -11,7 +12,7 @@ const btnRef2 = useRef(null);
 //eslint-disable-next-line
 return (
   <div className="surface-overlay py-3 px-6 shadow-1 flex align-items-center justify-content-between relative lg:static" style={{ minHeight: '80px' }}>
-    <img src="../../utils/Images/mavarlogo.jpg" alt="Mavarlogo" className="mr-1 lg:mr-6" />
+    <img src={mavarlogo2} alt="Mavarlogo" height={40} className="border-round-md mr-1 lg:mr-6" />
     <StyleClass nodeRef={btnRef1} selector="@next" enterClassName="hidden" leaveToClassName="hidden" hideOnOutsideClick>
       <div ref={btnRef1} className="cursor-pointer block lg:hidden text-700">
         <i className="pi pi-bars text-4xl"></i>
@@ -38,13 +39,13 @@ return (
           </StyleClass>   
           <ul className="list-none py-3 px-6 m-0 lg:px-0 lg:py-0 border-round shadow-0 lg:shadow-2 lg:border-1 border-50 lg:absolute surface-overlay hidden origin-top w-full lg:w-15rem cursor-pointer">
             <li>
-              <NavLink className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 w-full" style={{ textDecoration: 'none' }} to={`/order`}>
+              <NavLink className="p-ripple flex px-4 p-3 lg:px-3 lg:py-3 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 w-full" style={{ textDecoration: 'none' }} to={`/order`}>
                 <i className="pi pi-user-plus mr-2"></i>
                 <span className="font-medium">Panta túlk</span>
                 <Ripple />
               </NavLink>
-              <NavLink className="p-ripple flex p-3 align-items-center text-600 hover:text-900 hover:surface-100 transition-colors transition-duration-150 w-full" style={{ textDecoration: 'none' }} to={`/myorder`}>
-                <i className="pi pi-calendar mr-2"></i>
+              <NavLink className="p-ripple flex px-4 p-3 lg:px-3 lg:py-3 align-items-center text-600 hover:text-900 hover:surface-100 transition-colors transition-duration-150 w-full" style={{ textDecoration: 'none' }} to={`/myorder`}>
+                <i className="pi pi-list mr-2"></i>
                 <span className="font-medium">Mínir pantanir</span>
                 <Ripple />
               </NavLink>
@@ -53,7 +54,7 @@ return (
         </li>
         <li>
           <NavLink className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 w-full" style={{ textDecoration: 'none' }} to={`/check`}>
-            <i className="pi pi-calendar mr-2"></i>
+            <i className="pi pi-search mr-2"></i>
             <span>Athuga laus túlk</span>
             <Ripple />
           </NavLink>
