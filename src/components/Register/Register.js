@@ -53,12 +53,12 @@ export function RegisterForm() {
   const passwordFooter = (
       <React.Fragment>
           <Divider />
-          <p className="mt-2">Mæla með</p>
+          <p className="mt-2">Mæli með</p>
           <ul className="pl-2 ml-2 mt-0" style={{ lineHeight: '1.5' }}>
-              <li>At least one lowercase</li>
-              <li>At least one uppercase</li>
-              <li>At least one numeric</li>
-              <li>Minimum 8 characters</li>
+              <li>Minnist ein lágstaf</li>
+              <li>Minnist ein hástaf</li>
+              <li>Minnist eitt töluröð</li>
+              <li>Lágmark 8 stafrótir</li>
           </ul>
       </React.Fragment>
   );
@@ -107,31 +107,10 @@ export function RegisterForm() {
                   <label htmlFor="accept" className={classNames({ 'p-error': isFormFieldValid(meta) })}>Ég samþykkt skilyrði SHH*</label>
               </div>
             )} />
-          </form>
+           <Button label="Nýskrá" icon="pi pi-user-plus" className="w-full" />
+         </form>
         )} />
-        
-          
-
-          <Button label="Nýskrá" icon="pi pi-user-plus" className="w-full" />
-        </div>
       </div>
+    </div>
   );
 }
-
-/*
-<div>
-
-          <label htmlFor="email" className="block text-900 font-medium mb-2">Nafn</label>
-          <InputText type="text" className="w-full mb-3" />
-
-          <label htmlFor="password" className="block text-900 font-medium mb-2">Lyklaorð</label>
-          <InputText type="password" className="w-full mb-3" />
-
-          <div className="flex align-items-center justify-content-between mb-6">
-              <div className="flex align-items-center">
-                  <Checkbox id="rememberme" className="mr-2" checked={checked1} onChange={(e) => setChecked1(e.checked)} />
-                  <label htmlFor="rememberme">Mundu mér</label>
-              </div>
-              <a className="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer">Gleymt lyklaorð?</a>
-          </div>
-          */
