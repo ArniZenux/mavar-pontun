@@ -1,3 +1,4 @@
+import React, {useCallback, useContext, useEffect } from 'react'; 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Layout } from './components/Layout/Layout';
 import { Home } from './pages/home';
@@ -5,19 +6,33 @@ import { Order } from './pages/order';
 import { Myorder } from './pages/myorder';
 import { Check } from './pages/check';
 import { NotFound } from './pages/404';
-
 import { Login } from './pages/login';
 import { Register } from './pages/register';
 import { Reset } from './pages/reset';
+
+import { UserContext } from './context/UserContext';
 
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 
-export default function App() {
-  /*
-  return (
+function App() {
+  const [userContext, setUserContext] = useContext(UserContext); 
+
+  const verifyUser = useCallback(() => {
+    console.log('Hello useCallback() - app()');
+    
+    setUserContext(oldValues => {
+      return { ...oldValues, token : null }
+    })
+  }, [setUserContext]);
+
+  useEffect( () => {
+    verifyUser();
+  }, [verifyUser]);
+
+  return !userContext.token ? (
     <div>
        <BrowserRouter>
           <Routes>
@@ -28,10 +43,7 @@ export default function App() {
           </Routes>
       </BrowserRouter>
     </div>
-  )*/
-
-  
-  return (
+  ) : (
     <div>
       <BrowserRouter>
         <Layout>
@@ -46,5 +58,6 @@ export default function App() {
       </BrowserRouter>
     </div>
   );
-  
 }
+
+export default App;

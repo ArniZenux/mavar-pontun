@@ -1,14 +1,25 @@
 import { NavLink } from 'react-router-dom';
-import React, { useRef } from 'react';
+import React, {useContext, useRef } from 'react';
 import { StyleClass } from 'primereact/styleclass';
 import { Ripple } from 'primereact/ripple';
 import mavarlogo2 from '../../utils/Images/brid2.jpg';
+import { UserContext } from '../../context/UserContext';
 
 export const Navigation = () => {
+
+const [ userContext, setUserContext] = useContext(UserContext);
   
 const btnRef1 = useRef(null);
 const btnRef2 = useRef(null);
 
+const logoutHandler = () => {
+  //localStorage.removeItem('user');
+  setUserContext(oldValues => {
+    return { ...oldValues, token : null }
+  });
+}
+
+console.log('header', userContext);
 
 //eslint-disable
 return (
@@ -70,7 +81,7 @@ return (
           </div>
         </li>
         <li>
-          <NavLink className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 w-full"  style={{ textDecoration: 'none' }} to={``}>
+          <NavLink className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 w-full"  style={{ textDecoration: 'none' }} onClick={logoutHandler} to={``}>
             <i className="pi mr-2"></i>
             <span className="font-medium">Útskrá</span>
             <Ripple />
