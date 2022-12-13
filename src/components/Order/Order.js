@@ -154,7 +154,7 @@ export function OrderForm() {
                 
                   </div>
                 </div>
-              <Button label="Senda beiðni" icon="pi pi-send" className="w-auto ml-2" />
+              <Button type="submit" label="Senda beiðni" icon="pi pi-send" className="w-auto ml-2" />
               </form>
             )} />
           </div>
