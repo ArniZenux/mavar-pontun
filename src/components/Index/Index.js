@@ -18,7 +18,7 @@ export function Index() {
 
     <div className="surface-card shadow-2 border-round p-4">
       <div className="flex mb-5">
-        <span className="text-xl text-900 font-medium">Beiðni sem um eftir túlk</span>
+        <span className="text-xl text-900 font-medium">Beiðni um túlk</span>
       </div>
       <ul className="list-none p-0 m-0">
         <li className="flex flex-column md:flex-row md:align-items-center md:justify-content-between p-3 border-1 mb-3" style={{ borderRadius: '10px', backgroundColor: 'rgba(234,179,10,.1)', borderColor: 'rgba(234,179,10,.5)' }}>
