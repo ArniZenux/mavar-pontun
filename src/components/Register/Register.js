@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Form, Field } from 'react-final-form';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
@@ -8,9 +8,9 @@ import { Divider } from 'primereact/divider';
 import { classNames } from 'primereact/utils';
 
 export function RegisterForm() {
-  const [checked1, setChecked1] = useState(false);
-  const [showMessage, setShowMessage] = useState(false);
-  const [formData, setFormData] = useState({});
+  //const [checked1, setChecked1] = useState(false);
+  //const [showMessage, setShowMessage] = useState(false);
+  //const [formData, setFormData] = useState({});
 
   const validate = (data) => {
     let errors = {};
@@ -38,8 +38,8 @@ export function RegisterForm() {
   };
 
   const onSubmit = (data, form) => {
-    setFormData(data);
-    setShowMessage(true);
+    //setFormData(data);
+    //setShowMessage(true);
 
     form.restart();
   };

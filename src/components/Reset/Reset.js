@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Form, Field } from 'react-final-form';
 import { classNames } from 'primereact/utils';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 
 export function ResetForm() {
-  const [showMessage, setShowMessage] = useState(false);
-  const [formData, setFormData] = useState({});
+  //const [showMessage, setShowMessage] = useState(false);
+  //const [formData, setFormData] = useState({});
   
   const validate = (data) => {
     let errors = {};
@@ -22,8 +22,8 @@ export function ResetForm() {
   };
 
   const onSubmit = (data, form) => {
-    setFormData(data);
-    setShowMessage(true);
+    //setFormData(data);
+    //setShowMessage(true);
 
     form.restart();
   };
