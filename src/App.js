@@ -9,6 +9,7 @@ import { NotFound } from './pages/404';
 import { Login } from './pages/login';
 import { Register } from './pages/register';
 import { Reset } from './pages/reset';
+import { UserPage } from './pages/user';
 
 import { UserContext } from './context/UserContext';
 
@@ -32,7 +33,7 @@ function App() {
     verifyUser();
   }, [verifyUser]);
 
-  return !userContext.token ? (
+  return userContext.token ? (
     <div>
        <BrowserRouter>
           <Routes>
@@ -52,6 +53,7 @@ function App() {
             <Route exact path="/order" element={<Order />} />
             <Route exact path="/myorder" element={<Myorder />} />
             <Route exact path="/check" element={<Check />} />
+            <Route exact path="/user" element={<UserPage />} />
             <Route path="*" element={<NotFound/> } />
           </Routes>
         </Layout>

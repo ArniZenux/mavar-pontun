@@ -11,6 +11,7 @@ const [ userContext, setUserContext] = useContext(UserContext);
   
 const btnRef1 = useRef(null);
 const btnRef2 = useRef(null);
+const btnRef3 = useRef(null);
 
 const logoutHandler = () => {
   //localStorage.removeItem('user');
@@ -64,31 +65,62 @@ return (
             </li>
           </ul>
         </li>
-        <li>
-          <NavLink className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 w-full" style={{ textDecoration: 'none' }} to={`/check`}>
-            <i className="pi pi-search mr-2"></i>
-            <span>Athuga laus túlk</span>
-            <Ripple />
-          </NavLink>
+      </ul>
+
+      <ul className="list-none p-0 m-0 flex lg:align-items-center select-none flex-column lg:flex-row border-top-1 surface-border lg:border-top-none">
+        <li className="lg:relative">
+          <StyleClass nodeRef={btnRef3} selector="@next" enterClassName="hidden" enterActiveClassName="scalein" leaveToClassName="hidden" leaveActiveClassName="fadeout" hideOnOutsideClick>
+            <div ref={btnRef3} className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 w-full">
+              <i className="pi pi-users mr-2"></i>
+              <span>Nafn notanda</span> 
+              <i className="pi pi-angle-down ml-auto lg:ml-0"></i>
+              <Ripple />
+            </div> 
+          </StyleClass>   
+          <ul className="list-none py-3 px-6 m-0 lg:px-0 lg:py-0 border-round shadow-0 lg:shadow-2 lg:border-1 border-50 lg:absolute surface-overlay hidden origin-top w-full lg:w-15rem cursor-pointer">
+            <li>
+              <NavLink className="p-ripple flex px-4 p-3 lg:px-3 lg:py-3 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 w-full" style={{ textDecoration: 'none' }}to={`/user`} >
+                <i className="pi pi-pencil mr-2"></i>
+                <span className="font-medium">Breyta</span>
+                <Ripple />
+              </NavLink>
+              <NavLink className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 w-full"  style={{ textDecoration: 'none' }} onClick={logoutHandler} to={``}>
+                <i className="pi pi-sign-out mr-2"></i>
+                <span className="font-medium">Útskrá</span>
+                <Ripple />
+              </NavLink>
+            </li>
+          </ul>
         </li>
       </ul>
-      <ul className="list-none p-0 m-0 flex lg:align-items-center select-none flex-column lg:flex-row border-top-1 surface-border lg:border-top-none">
-        <li>
+  
+    </div>
+  </div>
+)
+}
+
+
+/*
+ <li>
           <div className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 w-full" to={`/check`}>
             <i className="pi pi-user mr-2"></i>
-            <span className="font-medium">Árni Ingi Jóhannesson (notandi)</span>
+            <span className="font-medium">Nafn notanda</span>
             <Ripple />
           </div>
         </li>
-        <li>
+  <li>
+    <NavLink className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 w-full" style={{ textDecoration: 'none' }} to={`/check`}>
+      <i className="pi pi-search mr-2"></i>
+      <span>Athuga laus túlk</span>
+      <Ripple />
+    </NavLink>
+  </li>
+
+   <li>
           <NavLink className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 w-full"  style={{ textDecoration: 'none' }} onClick={logoutHandler} to={``}>
             <i className="pi mr-2"></i>
             <span className="font-medium">Útskrá</span>
             <Ripple />
           </NavLink>
-      </li>
-      </ul>
-    </div>
-  </div>
-)
-}
+        </li>
+*/

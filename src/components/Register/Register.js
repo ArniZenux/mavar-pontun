@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
 import { InputText } from 'primereact/inputtext';
+import { InputMask } from 'primereact/inputmask';
 import { Button } from 'primereact/button';
 import { Checkbox } from 'primereact/checkbox';
 import { Password } from 'primereact/password';
@@ -24,6 +25,10 @@ export function RegisterForm() {
     }
     else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(data.email)) {
         errors.email = 'ógildi tölvupóstur';
+    }
+
+    if (!data.phonenr) {
+      errors.password = 'Vantar símanúmer.';
     }
 
     if (!data.password) {
@@ -89,6 +94,15 @@ export function RegisterForm() {
                     <InputText id="email" {...input} className={classNames({ 'p-invalid': isFormFieldValid(meta) })} />
                     <label htmlFor="email" className={classNames({ 'p-error': isFormFieldValid(meta) })}>Tölvupóstur*</label>
                   </span>
+                  {getFormErrorMessage(meta)}
+                </div>
+            )} />
+             <Field name="phonenr" render={({ input, meta }) => (
+                <div className="field md:mb-5">
+                     <span className="p-float-label">
+                          <InputMask id="phonenr" mask="999-9999" {...input} className={classNames({ 'p-invalid': isFormFieldValid(meta) })} />
+                          <label htmlFor="phonenr" className={classNames({ 'p-error': isFormFieldValid(meta) })}>Símanúmer*</label>
+                      </span>
                   {getFormErrorMessage(meta)}
                 </div>
             )} />
