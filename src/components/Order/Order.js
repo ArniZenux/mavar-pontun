@@ -58,8 +58,8 @@ export function OrderForm() {
 
   const onSubmit = async (data, form) => {
     //let path = `/`; 
-
     let zdata = [];
+    let success = true; 
     const stada = 2; 
     const utskyring = 'Í vinnslu';
     const tulkur = 'Í vinnslu'; 
@@ -77,17 +77,11 @@ export function OrderForm() {
     let _lastTimeHour = addZero(data.last_time.getHours());
     let _lastTimeMin = addZero(data.last_time.getMinutes());
     let _last_time = `${_lastTimeHour}:${_lastTimeMin}`;
-    
-    //console.log(_last_time);
 
     zdata.push(_last_time);
-
     zdata.push(stada);
     zdata.push(utskyring);
     zdata.push(tulkur);
-
-    //console.log(zdata); 
-    let success = true; 
 
     const requestOptions = {
       method: 'POST',
@@ -111,14 +105,6 @@ export function OrderForm() {
     zdata = [];
   };
 
-  /*let start_time_onchange = (e) => {
-    let hour = new Date(e).getHours();
-    let min = new Date(e).getMinutes();
-    let start_time_replace = `${hour}:${min}`;
-    //console.log(start_time_replace);
-    setStartTime(start_time_replace); 
-  }*/
-
   const isFormFieldValid = (meta) => !!(meta.touched && meta.error);
   const getFormErrorMessage = (meta) => {
     return isFormFieldValid(meta) && <small className="p-error">{meta.error}</small>;
@@ -129,9 +115,7 @@ export function OrderForm() {
     <div className="flex mb-5">
       <span className="text-xl text-900 font-medium">Pöntunarbeiðni</span>
     </div>
-    <div className="card">
-
-    
+       <div className="card">
             <Form onSubmit={onSubmit} 
               initialValues={{ name: '', place: '', desc: '', day: '', start_time: '', last_time: '' }} 
               validate={validate} 

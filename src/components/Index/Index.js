@@ -103,8 +103,6 @@ export function Index() {
       zdata.push(product.start_time); 
       zdata.push(product.last_time); 
 
-      console.log(zdata); 
-
       const requestOptions = {
         method: 'POST',
         headers: {"Content-Type": "application/json" },
@@ -114,10 +112,10 @@ export function Index() {
       success = await fetch(url, requestOptions);
         
       if(success){
-        console.log("success");
+        console.log('');
       }
       else {
-        console.log("Don't success");
+        console.error("Don't success");
       }
   
       setProductDialog(false);
@@ -140,10 +138,10 @@ export function Index() {
     success = await fetch(url, requestOptions);
       
     if(success){
-      console.log("success");
+      console.log('');
     }
     else {
-      console.log("Don't success");
+      console.error("Don't success");
     }
 
     setDeleteProductDialog(false);

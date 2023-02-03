@@ -33,7 +33,7 @@ function App() {
     verifyUser();
   }, [verifyUser]);
 
-  return userContext.token ? (
+  return !userContext.token ? (
     <div>
        <BrowserRouter>
           <Routes>
