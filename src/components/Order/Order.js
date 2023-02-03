@@ -78,7 +78,7 @@ export function OrderForm() {
     let _lastTimeMin = addZero(data.last_time.getMinutes());
     let _last_time = `${_lastTimeHour}:${_lastTimeMin}`;
     
-    console.log(_last_time);
+    //console.log(_last_time);
 
     zdata.push(_last_time);
 
@@ -86,7 +86,7 @@ export function OrderForm() {
     zdata.push(utskyring);
     zdata.push(tulkur);
 
-    console.log(zdata); 
+    //console.log(zdata); 
     let success = true; 
 
     const requestOptions = {
@@ -95,16 +95,16 @@ export function OrderForm() {
       body: JSON.stringify(zdata)
     };
     
-    console.log(apiUrl + '/beidni/sendaBeidni');
+    let url = apiUrl + '/beidni/sendaBeidni';
 
-    success = await fetch(apiUrl + '/beidni/sendaBeidni', requestOptions);
+    success = await fetch(url, requestOptions);
       
     if(success){
-      console.log("tokst tad");
+      console.log('');
       //navigate(path); 
     }
     else {
-      console.log("tokst ekki");
+      console.error("It don't success");
     }
 
     form.restart();
@@ -125,10 +125,13 @@ export function OrderForm() {
   };
 
   return (
-    <div className="flex-wrap justify-content-center" style={{ margin: '0 auto' }}>
-      <div className="surface-ground px-0 py-3 md:px-1 lg:px-1">
-        <div className="text-900 font-medium text-900 text-xl mb-3">Pöntunarbeiðni</div>
-          <div className="surface-card p-3 shadow-2 border-round p-fluid">
+    <div className="surface-card shadow-2 border-round p-4">
+    <div className="flex mb-5">
+      <span className="text-xl text-900 font-medium">Pöntunarbeiðni</span>
+    </div>
+    <div className="card">
+
+    
             <Form onSubmit={onSubmit} 
               initialValues={{ name: '', place: '', desc: '', day: '', start_time: '', last_time: '' }} 
               validate={validate} 
@@ -227,6 +230,15 @@ export function OrderForm() {
             )} />
           </div>
       </div>
-    </div>
   );
 }
+
+/*
+<div className="surface-card p-3 shadow-2 border-round p-fluid">
+  <div className="flex-wrap justify-content-center" style={{ margin: '0 auto' }}>
+    <div className="surface-ground px-0 py-3 md:px-1 lg:px-1">
+      <div className="text-900 font-medium text-900 text-xl mb-3">Pöntunarbeiðni</div>
+    </div>
+  </div>
+</div>
+*/

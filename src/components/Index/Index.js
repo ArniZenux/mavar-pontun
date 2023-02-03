@@ -88,16 +88,43 @@ export function Index() {
     setDeleteProductDialog(false);
   }
 
-  const saveProduct = () => {
+  const updateProduct = async () => {
     setSubmitted(true);
-
+    
     if(product.zdesc.trim()){
-      console.log("Staðfest breyta");
+      let zdata = [];
+      let success = true; 
+      let url = apiUrl + '/beidni/updateBeidni';
+      
+      zdata.push(product.id); 
+      zdata.push(product.place); 
+      zdata.push(product.zdesc); 
+      zdata.push(product.zday); 
+      zdata.push(product.start_time); 
+      zdata.push(product.last_time); 
+
+      console.log(zdata); 
+
+      const requestOptions = {
+        method: 'POST',
+        headers: {"Content-Type": "application/json" },
+        body: JSON.stringify(zdata)
+      };
+      
+      success = await fetch(url, requestOptions);
+        
+      if(success){
+        console.log("success");
+      }
+      else {
+        console.log("Don't success");
+      }
+  
       setProductDialog(false);
     }
   }
 
-  const deleteProduct = async () => {
+  const afbokaProduct = async () => {
     let zdata = [];
     let success = true; 
     let url = apiUrl + '/beidni/afbokaBeidni';
@@ -176,14 +203,14 @@ export function Index() {
   const productDialogFooter = (
     <React.Fragment>
         <Button label="Hætta" icon="pi pi-times" className="p-button-text" onClick={hideDialog} />
-        <Button label="Breyta" icon="pi pi-check" className="p-button-text" onClick={saveProduct} />
+        <Button label="Breyta" icon="pi pi-check" className="p-button-text" onClick={updateProduct} />
     </React.Fragment>
   );
 
   const deleteProductDialogFooter = (
     <React.Fragment>
         <Button label="Nei" icon="pi pi-times" className="p-button-text" onClick={hideDeleteProductDialog} />
-        <Button label="Já" icon="pi pi-check" className="p-button-text" onClick={deleteProduct} />
+        <Button label="Já" icon="pi pi-check" className="p-button-text" onClick={afbokaProduct} />
     </React.Fragment>
   );
 
