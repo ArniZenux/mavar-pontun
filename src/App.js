@@ -22,7 +22,7 @@ function App() {
   const [userContext, setUserContext] = useContext(UserContext); 
 
   const verifyUser = useCallback(() => {
-    console.log('Hello useCallback() - app()');
+    //console.log('Hello useCallback() - app()');
     
     setUserContext(oldValues => {
       return { ...oldValues, token : null }

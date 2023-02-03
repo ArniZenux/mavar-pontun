@@ -37,7 +37,7 @@ export function LoginForm() {
   const onSubmit = async (data, form, e) => {
     setFormData(data);
     setShowMessage(true);
-    console.log(data); 
+    //console.log(data); 
     const requestOptions = {
       method: 'POST',
       headers: {"Content-Type": "application/json"},
@@ -46,15 +46,15 @@ export function LoginForm() {
 
     await fetch(apiUrl + '/login', requestOptions)
       .then(async res => {
-        console.log(res);
+        //console.log(res);
         const datx = await res.json(); 
-        console.log(datx); 
+        //console.log(datx); 
         setUserContext(oldValues => 
           { return { ...oldValues, token:datx.token }
         });
       })
       .catch(err => {
-        console.log('Error response', err);
+        console.error('Error response', err);
         //setErrorMessages(res.error);
       })
 
