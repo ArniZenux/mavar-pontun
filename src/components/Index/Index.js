@@ -218,7 +218,8 @@ export function Index() {
         <span className="text-xl text-900 font-medium">Beiðni um táknmálstúlk</span>
       </div>
         
-        <DataTable value={products} dataKey="id" size="small" paginator rows={10} responsiveLayout="scroll" emptyMessage="Engin beiðni ennþá skráð.">
+        <DataTable value={products} dataKey="id" size="small" paginator rows={10} 
+        responsiveLayout="scroll" emptyMessage="Engin beiðni ennþá skráð.">
           <Column field="zdesc" header="Lýsing"></Column>
           <Column field="place" header="Staður"></Column>
           <Column field="zday" header="Dagur"></Column>
