@@ -18,9 +18,10 @@ export function Index() {
     zday: '',
     start_time: '',
     last_time: '',
+    zstatus: 'Í vinnslu',
+    zchecked: '',
     explanation: '',
-    interpreter: '',
-    zstatus: 'Í vinnslu'
+    interpreter: ''
   };
 
   const interval = useRef(0); 
@@ -40,11 +41,15 @@ export function Index() {
       let json; 
 
       try {
-        const result = await fetch(apiUrl + `/beidni/byBeidni`);
+        let url = apiUrl + `/beidni/byBeidni`;
+        //console.log(url); 
+        const result = await fetch(url);
         if(!result.ok){
           throw new Error('Ekki ok');
         }
         json = await result.json();
+        //console.log(json);
+        
       }
       catch(e){
         console.warn('unable to fetch data', e); 
@@ -165,6 +170,21 @@ export function Index() {
     setProduct(_product);
   }
 
+  const checkedBodyTemplete = (rowData) => {
+    if(rowData.zchecked === 0){
+      return (
+        <React.Fragment>
+           <Button icon="pi pi-circle" disabled className="p-button-rounded p-button-text" />
+         </React.Fragment>
+      )}
+    if(rowData.zchecked === 1){
+      return (
+        <React.Fragment>
+           <Button icon="pi pi-circle-fill" disabled className="p-button-rounded p-button-text" />
+         </React.Fragment>
+      )}
+  }
+
   const statusBodyTemplate = (rowData) => {
     if(rowData.zstatus === 0){
       return <span className={`product-badge status-${rowData.zstatus} pr-3 pl-3 pt-1 pb-1`}>Enginn laus</span>;
@@ -220,6 +240,7 @@ export function Index() {
         
         <DataTable value={products} dataKey="id" size="small" paginator rows={10} 
         responsiveLayout="scroll" emptyMessage="Engin beiðni ennþá skráð.">
+          <Column field="checked" body={checkedBodyTemplete} style={{ minWidth: '2rem' }}></Column>
           <Column field="zdesc" header="Lýsing"></Column>
           <Column field="place" header="Staður"></Column>
           <Column field="zday" header="Dagur"></Column>

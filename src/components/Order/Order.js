@@ -61,6 +61,7 @@ export function OrderForm() {
     let zdata = [];
     let success = true; 
     const stada = 2; 
+    const zchecked = 0;
     const utskyring = 'Í vinnslu';
     const tulkur = 'Í vinnslu'; 
     
@@ -80,6 +81,7 @@ export function OrderForm() {
 
     zdata.push(_last_time);
     zdata.push(stada);
+    zdata.push(zchecked);
     zdata.push(utskyring);
     zdata.push(tulkur);
 
