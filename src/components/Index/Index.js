@@ -262,25 +262,25 @@ export function Index() {
 
           <div className="field">
             <label htmlFor="zdesc">Lýsing</label>
-            <InputTextarea id="zdesc" value={product.zdesc} autoResize  onChange={(e) => onInputChange(e, 'zdesc')} required rows={3} autoFocus className={classNames({ 'p-invalid': submitted && !product.zdesc })} />
+            <InputTextarea id="zdesc" value={product.zdesc} autoResize  onChange={(e) => onInputChange(e, 'zdesc')} required rows={3}  className={classNames({ 'p-invalid': submitted && !product.zdesc })} />
             {submitted && !product.zdesc && <small className="p-error">Vantar lýsing.</small>}
           </div>
 
           <div className="field">
             <label htmlFor="zday">Dagur</label>
-            <InputText id="zday" value={product.zday} onChange={(e) => onInputChange(e, 'zday')} required rows={3} cols={10} autoFocus className={classNames({ 'p-invalid': submitted && !product.zday })} />
+            <InputText id="zday" value={product.zday} onChange={(e) => onInputChange(e, 'zday')} required rows={3} cols={10}  className={classNames({ 'p-invalid': submitted && !product.zday })} />
             {submitted && !product.zday && <small className="p-error">Vantar dagur.</small>}
           </div>
 
           <div className="field">
             <label htmlFor="start_time">Klukka byrjar</label>
-            <InputText id="start_time" type="time" value={product.start_time} onChange={(e) => onInputChange(e, 'start_time')} required rows={3} cols={10} autoFocus className={classNames({ 'p-invalid': submitted && !product.start_time })} />
+            <InputText id="start_time" type="time" value={product.start_time} onChange={(e) => onInputChange(e, 'start_time')} required rows={3} cols={10}  className={classNames({ 'p-invalid': submitted && !product.start_time })} />
             {submitted && !product.start_time && <small className="p-error">Vantar klukka.</small>}
           </div>
 
           <div className="field">
             <label htmlFor="last_time">Klukka endir</label>
-            <InputText id="last_time" type="time" value={product.last_time} onChange={(e) => onInputChange(e, 'last_time')} required rows={3} cols={10} autoFocus className={classNames({ 'p-invalid': submitted && !product.last_time })} />
+            <InputText id="last_time" type="time" value={product.last_time} onChange={(e) => onInputChange(e, 'last_time')} required rows={3} cols={10}  className={classNames({ 'p-invalid': submitted && !product.last_time })} />
             {submitted && !product.last_time && <small className="p-error">Vantar klukka.</small>}
           </div>
   
