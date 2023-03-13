@@ -10,7 +10,6 @@ import { Login } from './pages/login';
 import { Register } from './pages/register';
 import { Reset } from './pages/reset';
 import { UserPage } from './pages/user';
-
 import { UserContext } from './context/UserContext';
 
 import 'primereact/resources/themes/saga-blue/theme.css';
@@ -22,7 +21,6 @@ function App() {
   const [userContext, setUserContext] = useContext(UserContext); 
 
   const verifyUser = useCallback(() => {
-    //console.log('Hello useCallback() - app()');
     
     setUserContext(oldValues => {
       return { ...oldValues, token : null }
@@ -38,8 +36,8 @@ function App() {
        <BrowserRouter>
           <Routes>
             <Route exact path="/" element={<Login />} />
-            <Route exact path="/register" element={<Register />} />
-            <Route exact path="/reset" element={<Reset />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/reset" element={<Reset />} />
             <Route path="*" element={<NotFound/> } />
           </Routes>
       </BrowserRouter>
@@ -50,10 +48,10 @@ function App() {
         <Layout>
           <Routes>
             <Route exact path="/" element={<Home />} />
-            <Route exact path="/order" element={<Order />} />
-            <Route exact path="/myorder" element={<Myorder />} />
-            <Route exact path="/check" element={<Check />} />
-            <Route exact path="/user" element={<UserPage />} />
+            <Route path="/order" element={<Order />} />
+            <Route path="/myorder" element={<Myorder />} />
+            <Route path="/check" element={<Check />} />
+            <Route path="/user" element={<UserPage />} />
             <Route path="*" element={<NotFound/> } />
           </Routes>
         </Layout>

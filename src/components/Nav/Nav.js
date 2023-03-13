@@ -1,26 +1,62 @@
 import { NavLink } from 'react-router-dom';
-import React, {useContext, useRef } from 'react';
+import React, {useCallback, useContext, useEffect, useRef } from 'react';
 import { StyleClass } from 'primereact/styleclass';
 import { Ripple } from 'primereact/ripple';
 import mavarlogo2 from '../../utils/Images/brid2.jpg';
 import { UserContext } from '../../context/UserContext';
 
-export const Navigation = () => {
+const apiUrl = process.env.REACT_APP_API_URL;
 
+export const Navigation = () => {
 const [ userContext, setUserContext] = useContext(UserContext);
-  
 const btnRef1 = useRef(null);
 const btnRef2 = useRef(null);
 const btnRef3 = useRef(null);
 
+const fetchUserData = useCallback(() => {
+  let url = apiUrl +  '/admin';
+
+  const requestOptions = {
+    method: 'GET',
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${userContext.token}`,
+    },
+  }
+  fetch(url, requestOptions)
+    .then(async res => {
+        let datajson = await res.json();
+        console.log(datajson); 
+        setUserContext(oldValues => {
+          return { ...oldValues, details: datajson}
+      })
+    })
+    .catch(err => {
+      console.err('Error response', err);
+      setUserContext(oldValues => {
+        return { ...oldValues, details: null}
+      }) 
+    })
+  },[setUserContext, userContext.token]);
+
+useEffect(() => {
+  if(!userContext.details){
+    fetchUserData();
+  }
+},[userContext.details, fetchUserData]);
+
 const logoutHandler = () => {
-  //localStorage.removeItem('user');
   setUserContext(oldValues => {
-    return { ...oldValues, token : null }
+    return { ...oldValues, details: undefined, token : null }
   });
 }
 
-console.log('header', userContext);
+let _name =  '';
+  if( userContext !== null){
+    if(userContext.details){
+      _name = userContext.details.data.username;
+    }
+  }
 
 //eslint-disable
 return (
@@ -72,7 +108,7 @@ return (
           <StyleClass nodeRef={btnRef3} selector="@next" enterClassName="hidden" enterActiveClassName="scalein" leaveToClassName="hidden" leaveActiveClassName="fadeout" hideOnOutsideClick>
             <div ref={btnRef3} className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 w-full">
               <i className="pi pi-users mr-2"></i>
-              <span>Nafn notanda</span> 
+              <span> {_name} </span> 
               <i className="pi pi-angle-down ml-auto lg:ml-0"></i>
               <Ripple />
             </div> 
