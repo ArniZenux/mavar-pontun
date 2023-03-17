@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'; 
+import { useState, useContext, useRef } from 'react'; 
 //import { useNavigate } from 'react-router-dom';
 import { Form, Field } from 'react-final-form';
 import { Calendar } from "primereact/calendar";
@@ -7,12 +7,14 @@ import { InputTextarea } from 'primereact/inputtextarea';
 import { Button } from 'primereact/button';
 import { classNames } from 'primereact/utils';
 import { Toast } from 'primereact/toast';
+import { UserContext } from '../../context/UserContext';
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
 export function OrderForm() {
   //let navigate = useNavigate(); 
   const toast = useRef(null);
+  const [ userContext ] = useContext(UserContext);
   let [day, setDay] = useState(new Date());
   let [start_time, setStartTime] = useState("00:00");
   let [last_time, setLastTime] = useState("00:00");
@@ -23,10 +25,6 @@ export function OrderForm() {
 
   const validate = (data) => {
     let errors = {};
-
-    if (!data.name) {
-        errors.name = 'Vantar nafn';
-    }
 
     if (!data.place) {
         errors.place = 'Vantar staðsetning';
@@ -65,7 +63,6 @@ export function OrderForm() {
     const utskyring = 'Í vinnslu';
     const tulkur = 'Í vinnslu'; 
     
-    zdata.push(data.name);
     zdata.push(data.place);
     zdata.push(data.desc);
     zdata.push(data.day.toLocaleDateString('IS'));
@@ -87,7 +84,10 @@ export function OrderForm() {
 
     const requestOptions = {
       method: 'POST',
-      headers: {"Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userContext.token}`,
+      },
       body: JSON.stringify(zdata)
     };
     
@@ -119,7 +119,7 @@ export function OrderForm() {
     </div>
        <div className="card">
             <Form onSubmit={onSubmit} 
-              initialValues={{ name: '', place: '', desc: '', day: '', start_time: '', last_time: '' }} 
+              initialValues={{ place: '', desc: '', day: '', start_time: '', last_time: '' }} 
               validate={validate} 
               render={({ handleSubmit }) => (
 
@@ -127,18 +127,8 @@ export function OrderForm() {
                 <div className="grid formgrid">
                   <div className="field mb-4 col-12 md:col-6">
 
-                    <Field name="name" render={({ input, meta }) => (
-                      <div className="field mt-4 col-12 md:col-12">
-                        <span className="p-float-label">
-                          <InputText id="name" {...input}  className={classNames({ 'p-invalid': isFormFieldValid(meta) })} />
-                          <label htmlFor="name" className={classNames({ 'p-error': isFormFieldValid(meta) })}>Nafn þitt*</label>
-                        </span>
-                        {getFormErrorMessage(meta)}
-                      </div>
-                    )} />
-                    
                     <Field name="place" render={({ input, meta }) => (
-                      <div className="field mt-5 col-12 md:col-12">
+                      <div className="field mt-4 col-12 md:col-12">
                         <span className="p-float-label">
                           <InputText id="place" {...input}  className={classNames({ 'p-invalid': isFormFieldValid(meta) })} />
                           <label htmlFor="place" className={classNames({ 'p-error': isFormFieldValid(meta) })}>Hvar er staður*</label>

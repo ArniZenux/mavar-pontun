@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import { classNames } from 'primereact/utils';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
@@ -6,13 +6,14 @@ import { Button } from 'primereact/button';
 import { Dialog } from 'primereact/dialog';
 import { InputText } from 'primereact/inputtext';
 import { InputTextarea } from 'primereact/inputtextarea';
+import { UserContext } from '../../context/UserContext';
 import './DataTableDemo.css';
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
 export function Index() {
   let emptyPontun = {
-    id: null,
+    zidbeidni: null,
     zdesc: '',
     place : '',
     zday: '',
@@ -26,6 +27,7 @@ export function Index() {
 
   const interval = useRef(0); 
 
+  const [ userContext ] = useContext(UserContext);
   const [error, setError] = useState(null);
   const [product, setProduct] = useState(emptyPontun);
   const [products, setProducts] = useState(null);
@@ -39,11 +41,21 @@ export function Index() {
     async function fetchData() {
       setError(null); 
       let json; 
+      
+      //console.log(userContext.details.username);
+      const requestOptions = {
+        method: 'GET',
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userContext.token}`,
+        },
+      }
 
       try {
-        let url = apiUrl + `/beidni/byBeidni`;
+        //let url = apiUrl + `/beidni/byBeidni/`;
+        let url = apiUrl + `/beidni/byBeidniOne/`;
         //console.log(url); 
-        const result = await fetch(url);
+        const result = await fetch(url, requestOptions);
         if(!result.ok){
           throw new Error('Ekki ok');
         }
@@ -63,7 +75,7 @@ export function Index() {
       clearInterval(interval.current);
       interval.current = null; 
     }
-  },[]);
+  },[userContext]);
 
   if(error){
     return (
@@ -99,9 +111,10 @@ export function Index() {
     if(product.zdesc.trim()){
       let zdata = [];
       let success = true; 
+      
       let url = apiUrl + '/beidni/updateBeidni';
       
-      zdata.push(product.id); 
+      zdata.push(product.zidbeidni); 
       zdata.push(product.place); 
       zdata.push(product.zdesc); 
       zdata.push(product.zday); 
@@ -110,10 +123,15 @@ export function Index() {
 
       const requestOptions = {
         method: 'POST',
-        headers: {"Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userContext.token}`,
+        },
         body: JSON.stringify(zdata)
       };
       
+      //console.log(zdata);
+
       success = await fetch(url, requestOptions);
         
       if(success){
@@ -132,11 +150,14 @@ export function Index() {
     let success = true; 
     let url = apiUrl + '/beidni/afbokaBeidni';
 
-    zdata.push(product.id); 
+    zdata.push(product.zidbeidni); 
 
     const requestOptions = {
       method: 'POST',
-      headers: {"Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userContext.token}`,
+      },
       body: JSON.stringify(zdata)
     };
     
@@ -239,7 +260,7 @@ export function Index() {
       </div>
         
         <DataTable value={products} dataKey="id" size="small" paginator rows={10} 
-        responsiveLayout="scroll" emptyMessage="Engin beiðni ennþá skráð.">
+        responsiveLayout="scroll" emptyMessage="Engin beiðni enn skráð.">
           <Column field="checked" body={checkedBodyTemplete} style={{ minWidth: '2rem' }}></Column>
           <Column field="zdesc" header="Lýsing"></Column>
           <Column field="place" header="Staður"></Column>

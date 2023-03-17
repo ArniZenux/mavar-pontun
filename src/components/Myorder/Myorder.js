@@ -1,30 +1,33 @@
-import React, { useState, useEffect } from 'react';
-//import { FilterMatchMode, FilterOperator } from 'primereact/api';
+import React, { useContext, useState, useEffect } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-//import { InputText } from 'primereact/inputtext';
+import { UserContext } from '../../context/UserContext';
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
 export function MyorderForm() {
-  //const [globalFilterValue1, setGlobalFilterValue1] = useState('');
+  const [ userContext ] = useContext(UserContext);
   const [loading, setLoading] = useState(false);
-  //const [loading1, setLoading1] = useState(true);
   const [error, setError] = useState(null);
   const [products, setProducts] = useState([]);
-  //const [filters1, setFilters1] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
-      //setLoading1(false); 
       setError(null); 
-      //initFilters1();
 
     let json; 
+    const requestOptions = {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userContext.token}`,
+      },
+    }
 
     try {
-      const result = await fetch(apiUrl + `/beidni/byBeidni`);
+      let url = apiUrl + `/beidni/byBeidniOne/`;
+      const result = await fetch(url,requestOptions);
       if(!result.ok){
         throw new Error('Ekki ok');
       }
@@ -41,9 +44,16 @@ export function MyorderForm() {
     setProducts(json); 
    }
    fetchData(); 
-  },[]);
+  },[userContext]);
 
-  /*const onGlobalFilterChange1 = (e) => {
+  /*
+    /////////////////////////
+    //                     //
+    //  Bæta þetta seinna  // 
+    //                     //
+    /////////////////////////
+
+    const onGlobalFilterChange1 = (e) => {
     const value = e.target.value;
     let _filters1 = { ...filters1 };
     _filters1['global'].value = value;

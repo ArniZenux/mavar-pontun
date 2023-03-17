@@ -129,7 +129,7 @@ export function RegisterForm() {
           <Link className="font-medium no-underline ml-2 text-blue-500 cursor-pointer" to="/">Innskráning</Link><br/>   
         </div>
 
-        <Form onSubmit={onSubmit} initialValues={{ name: '', email: '', password: '', date: null, country: null, accept: false }} validate={validate} render={({ handleSubmit }) => (
+        <Form onSubmit={onSubmit} initialValues={{ name: '', email: '', phonenr:'', password: '', date: null, country: null, accept: false }} validate={validate} render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit} className="p-fluid">
               <Field name="name" render={({ input, meta }) => (
                   <div className="field md:mb-5">
