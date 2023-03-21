@@ -241,7 +241,7 @@ export function Index() {
 
   const productDialogFooter = (
     <React.Fragment>
-        <Button label="Hætta" icon="pi pi-times" className="p-button-text" onClick={hideDialog} />
+        <Button label="Loka" icon="pi pi-times" className="p-button-text" onClick={hideDialog} />
         <Button label="Breyta" icon="pi pi-check" className="p-button-text" onClick={updateProduct} />
     </React.Fragment>
   );

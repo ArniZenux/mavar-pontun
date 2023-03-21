@@ -90,7 +90,7 @@ const onRowEditComplete2 = async (e) => {
         body: JSON.stringify(newData)
       };
       
-      let url = apiUrl + '/custom/updatecustom/' + newData.id; 
+      let url = apiUrl + '/custom/updatecustom/' + newData.zidcustom; 
       
       success = await fetch(url , requestOptions);
       
