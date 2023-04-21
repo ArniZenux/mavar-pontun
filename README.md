@@ -12,7 +12,7 @@ Aðgerðir í pöntunkerfi:
 * Afbóka pöntun.
 * Skoða pöntunarlisti. 
 
-## Images of bókunarkerfi.
+## Images of Pöntunarkerfi.
 ![alt text](https://github.com/ArniZenux/mavar-cms/blob/main/image/Innskraning.jpg)
 ![alt text](https://github.com/ArniZenux/mavar-cms/blob/main/image/pontun_senda_beidni.jpg)
 ![alt text](https://github.com/ArniZenux/mavar-cms/blob/main/image/pontun_panta_tulk.jpg)
