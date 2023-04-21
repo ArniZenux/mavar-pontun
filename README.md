@@ -13,10 +13,10 @@ Aðgerðir í pöntunkerfi:
 * Skoða pöntunarlisti. 
 
 ## Images of Pöntunarkerfi.
-![alt text](https://github.com/ArniZenux/mavar-cms/blob/main/image/Innskraning.jpg)
-![alt text](https://github.com/ArniZenux/mavar-cms/blob/main/image/pontun_senda_beidni.jpg)
-![alt text](https://github.com/ArniZenux/mavar-cms/blob/main/image/pontun_panta_tulk.jpg)
-![alt text](https://github.com/ArniZenux/mavar-cms/blob/main/image/pontun_pontunarlistii.jpg)
+![alt text](https://github.com/ArniZenux/mavar-pontun/blob/master/image/Innskraning.jpg)
+![alt text](https://github.com/ArniZenux/mavar-pontun/blob/master/image/pontun_senda_beidni.jpg)
+![alt text](https://github.com/ArniZenux/mavar-pontun/blob/master/image/pontun_panta_tulk.jpg)
+![alt text](https://github.com/ArniZenux/mavar-pontun/blob/master/image/pontun_pontunarlistii.jpg)
 
 ### Built With
 * [![React][React.js]][React-url]
