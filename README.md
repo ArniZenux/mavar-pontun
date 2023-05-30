@@ -54,6 +54,10 @@ Endanlega á að kíkja á síðuna og download backend-system.
 * www: pontun.netlify.app
 * username : admin@shh.is
 * password : 123
+---
+* username : anna@shh.is
+* password : 123
+
 
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
