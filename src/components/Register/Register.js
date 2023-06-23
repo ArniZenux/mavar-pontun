@@ -48,7 +48,7 @@ export function RegisterForm() {
 
   const onSubmit = async (data, form) => {
     setFormData(data);
-    console.log(data); 
+    //console.log(data); 
     const requestOptions = {
       method: 'POST',
       headers: {"Content-Type": "application/json"},
@@ -59,10 +59,10 @@ export function RegisterForm() {
     
     await fetch(apiUrl + '/admin/register', requestOptions)
       .then(async res => {
-        console.log("Register");
-        console.log(res);
-        const data_token = await res.json(); 
-        console.log(data_token); 
+        //console.log("Register");
+        //console.log(res);
+        //const data_token = await res.json(); 
+        //console.log(data_token); 
         /*setUserContext(oldValues => 
           { return { ...oldValues, token:data_token.token }
         });*/

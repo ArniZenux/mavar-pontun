@@ -13,6 +13,8 @@ export function LoginForm() {
   const [formData, setFormData] = useState({});
   const [userContext, setUserContext] = useContext(UserContext);
 
+  //console.log(apiUrl); 
+
   const validate = (data) => {
     let errors = {};
 
@@ -67,7 +69,7 @@ export function LoginForm() {
     <div className="flex justify-content-center">
       <div className="surface-card mt-5 p-4 shadow-3 border-round w-full lg:w-4">
         <div className="text-center mb-5">
-          <div className="text-900 text-3xl font-medium mb-3">Mávar - Innskráning</div>
+          <div className="text-900 text-3xl font-medium mb-3">Mávar - Pöntunarsíða</div>
           <span className="text-600 font-medium line-height-3">Ekki með aðgengi?</span>
           <Link className="font-medium no-underline ml-2 text-blue-500 cursor-pointer" to="/register">Stofna nýju aðgengi</Link><br/>        
         </div>

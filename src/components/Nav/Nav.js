@@ -26,7 +26,7 @@ const fetchUserData = useCallback(() => {
   fetch(url, requestOptions)
     .then(async res => {
         let datajson = await res.json();
-        console.log(datajson); 
+        //console.log(datajson); 
         setUserContext(oldValues => {
           return { ...oldValues, details: datajson}
       })
