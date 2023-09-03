@@ -98,8 +98,16 @@ return (
                 <span className="font-medium">Mínir pantanir</span>
                 <Ripple />
               </NavLink>
+             
             </li>
           </ul>
+        </li>
+        <li>
+          <NavLink className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 w-full" style={{ textDecoration: 'none' }} to={`/check`}>
+            <i className="pi pi-search mr-2"></i>
+            <span>Athuga laus túlk</span>
+            <Ripple />
+          </NavLink>
         </li>
       </ul>
 
@@ -159,4 +167,10 @@ return (
             <Ripple />
           </NavLink>
         </li>
+
+         <NavLink className="p-ripple flex px-4 p-3 lg:px-3 lg:py-3 align-items-center text-600 hover:text-900 hover:surface-100 transition-colors transition-duration-150 w-full" style={{ textDecoration: 'none' }} to={`/check`}>
+                <i className="pi pi-list mr-2"></i>
+                <span className="font-medium">Athuga</span>
+                <Ripple />
+              </NavLink>
 */
