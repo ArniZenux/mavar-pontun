@@ -13,40 +13,38 @@ export function CheckForm( ) {
   //const [ userContext ] = useContext(UserContext);
   let [day, setDay] = useState(new Date());
 
-  
-
-return (
-  <div className="surface-card shadow-2 border-round p-4">
-  <div className="flex mb-5">
-    <span className="text-xl text-900 font-medium">Athuga túlk sé laus</span>
-  </div>
-    <div className="card p-fluid">
-       <div className="grid formgrid">
-          <div className="field mb-4 col-12 md:col-6">
-                   <span className="p-float-label">
-                      <Calendar 
-                        id="day"
-                        value={day}  
-                        onChange={(e) => setDay(e.value)}
-                        dateFormat="dd/mm/yy" 
-                        mask="99/99/9999"
-                        showIcon 
-                      />
-                      <label htmlFor="dagtal">Dagtal*</label>
-                    </span>   
-              </div>
-
-              <div className="field mb-4 col-12 md:col-6">
-                  <div className="field col-12 md:col-12">
+  return (
+    <div className="surface-card shadow-2 border-round p-4">
+    <div className="flex mb-5">
+      <span className="text-xl text-900 font-medium">Athuga hvort túlkur sé upptekinn á ákveðni tíma</span>
+    </div>
+      <div className="card p-fluid">
+        <div className="grid formgrid">
+            <div className="field mb-4 col-12 md:col-6">
                     <span className="p-float-label">
-                      <div> <CheckDay id={day}/> </div>
-                    </span>                  
-                  </div>
+                        <Calendar 
+                          id="day"
+                          value={day}  
+                          onChange={(e) => setDay(e.value)}
+                          dateFormat="dd/mm/yy" 
+                          mask="99/99/9999"
+                          showIcon 
+                        />
+                        <label htmlFor="dagtal">Dagtal*</label>
+                      </span>   
+                </div>
+
+                <div className="field mb-4 col-12 md:col-6">
+                    <div className="field col-12 md:col-12">
+                      <span className="p-float-label">
+                        <div> <CheckDay id={day}/> </div>
+                      </span>                  
+                    </div>
+                </div>
               </div>
-            </div>
-        </div>
-    </div> 
-  );
+          </div>
+      </div> 
+    );
 }  
 
 /*
