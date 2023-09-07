@@ -5,6 +5,7 @@ import { Home } from './pages/home';
 import { Order } from './pages/order';
 import { Myorder } from './pages/myorder';
 import { Check } from './pages/check';
+import { Tulkur } from './pages/interpreters';
 import { NotFound } from './pages/404';
 import { Login } from './pages/login';
 import { Register } from './pages/register';
@@ -50,6 +51,7 @@ function App() {
             <Route exact path="/" element={<Home />} />
             <Route path="/order" element={<Order />} />
             <Route path="/myorder" element={<Myorder />} />
+            <Route path="/tulkar" element={<Tulkur />} />
             <Route path="/check" element={<Check />} />
             <Route path="/user" element={<UserPage />} />
             <Route path="*" element={<NotFound/> } />
