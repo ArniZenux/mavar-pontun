@@ -7,7 +7,7 @@ import { UserContext } from '../../context/UserContext';
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
-export function UserInfo() {
+export function UserInfo(  { id } ) {
   const [ userContext ] = useContext(UserContext);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -18,7 +18,7 @@ export function UserInfo() {
     async function fetchData() {
       setLoading(true); 
       setError(null); 
-
+      console.log('asdf' + id); 
       let json; 
       const requestOptions = {
         method: 'GET',
@@ -29,7 +29,14 @@ export function UserInfo() {
       }
 
       try {
-        const result = await fetch(apiUrl + `/custom/`, requestOptions);
+        //const result = await fetch(apiUrl + `/custom/`, requestOptions);
+
+        const apiUrlId = apiUrl + '/custom/getOneCustom/';
+        const url = new URL(id, apiUrlId); 
+        console.log(url); 
+
+        const result = await fetch(url, requestOptions); 
+
         if(!result.ok){
           throw new Error('Ekki ok');
         }
@@ -47,7 +54,7 @@ export function UserInfo() {
       setCustom(json); 
     }
   fetchData(); 
-},[userContext]);
+},[userContext, id]);
 
 if(error){
    return (

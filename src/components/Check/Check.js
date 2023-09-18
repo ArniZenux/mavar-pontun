@@ -12,6 +12,7 @@ import { CheckDay } from './checkDay';
 export function CheckForm( ) {
   //const [ userContext ] = useContext(UserContext);
   let [day, setDay] = useState(new Date());
+  console.log(day); 
 
   return (
     <div className="surface-card shadow-2 border-round p-4">

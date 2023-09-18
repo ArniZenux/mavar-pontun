@@ -16,6 +16,7 @@ export function CheckDay( {id}) {
       
       let zdata = [];
       zdata.push(find_day);
+      console.log(zdata); 
 
      const requestOptions = {
         method: 'POST',

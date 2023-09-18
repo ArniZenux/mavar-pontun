@@ -53,7 +53,7 @@ function App() {
             <Route path="/myorder" element={<Myorder />} />
             <Route path="/tulkar" element={<Tulkur />} />
             <Route path="/check" element={<Check />} />
-            <Route path="/user" element={<UserPage />} />
+            <Route path="/user/:id" element={<UserPage />} />
             <Route path="*" element={<NotFound/> } />
           </Routes>
         </Layout>
